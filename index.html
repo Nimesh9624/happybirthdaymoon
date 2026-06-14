@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Moon ❤️</title>
+  <meta name="description" content="A special birthday surprise for Moon — featuring a countdown calendar, cake, gallery, and love message." />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ===================== PAGE 1: WELCOME ===================== -->
+<section id="page-welcome" class="page active">
+  <canvas id="welcome-canvas"></canvas>
+  <div class="floating-hearts-bg" id="floating-hearts"></div>
+  <div class="balloons-container" id="balloons"></div>
+
+  <div class="welcome-content glass-card animate__animated animate__fadeInDown">
+    <div class="crown-emoji">👑</div>
+    <h1 class="welcome-title">A Special Surprise</h1>
+    <h2 class="welcome-subtitle">For Someone Very Special</h2>
+    <div class="heart-divider">❤️ &nbsp; ❤️ &nbsp; ❤️</div>
+    <p class="welcome-desc">Something magical is waiting for you...</p>
+    <button id="btn-start" class="btn-primary pulse-btn" onclick="startJourney()">
+      <span>✨ Start Countdown ✨</span>
+    </button>
+  </div>
+
+  <div class="stars-container" id="stars"></div>
+</section>
+
+<!-- ===================== PAGE 2: CALENDAR COUNTDOWN ===================== -->
+<section id="page-calendar" class="page">
+  <canvas id="calendar-canvas"></canvas>
+
+  <div class="calendar-container">
+    <div class="calendar-month-header">
+      <span class="month-label">June 2026</span>
+      <div class="hearts-row">💕</div>
+    </div>
+
+    <div class="calendar-card-wrapper" id="calendar-card-wrapper">
+      <div class="calendar-card glass-card" id="calendar-card">
+        <div class="cal-day-number" id="cal-day-number">1</div>
+        <div class="cal-month" id="cal-month">June</div>
+        <div class="cal-message" id="cal-message">A special day is getting closer...</div>
+        <div class="cal-hearts" id="cal-hearts">💕</div>
+        <div class="cal-days-left" id="cal-days-left">14 days to go...</div>
+      </div>
+
+      <!-- Torn paper effect layers -->
+      <div class="torn-overlay" id="torn-overlay"></div>
+    </div>
+
+    <div class="calendar-nav">
+      <button id="btn-prev-day" class="btn-secondary" onclick="prevDay()" style="display:none;">← Previous</button>
+      <div class="day-progress">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <button id="btn-next-day" class="btn-primary" onclick="nextDay()">Next Day →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 3: BIRTHDAY REVEAL POPUP ===================== -->
+<div id="birthday-popup" class="popup-overlay" style="display:none;">
+  <canvas id="fireworks-canvas"></canvas>
+  <div class="popup-content" id="popup-content">
+    <div class="popup-sparkles" id="popup-sparkles"></div>
+    <div class="popup-emoji">🎉🎊🎉</div>
+    <h1 class="popup-title">HAPPY BIRTHDAY</h1>
+    <h2 class="popup-name">Dear MOON ❤️</h2>
+    <div class="popup-divider"></div>
+    <p class="popup-message">
+      You are one of the most beautiful parts of my life.<br/>
+      May your smile always shine brighter than the stars.<br/><br/>
+      Wishing you endless happiness, love, success,<br/>
+      and unforgettable memories.
+    </p>
+    <div class="popup-signature">Happy Birthday Moon ❤️</div>
+    <button class="btn-primary glow-btn" onclick="openCakePage()">OK ❤️</button>
+  </div>
+</div>
+
+<!-- ===================== PAGE 4: BIRTHDAY CAKE ===================== -->
+<section id="page-cake" class="page">
+  <canvas id="cake-sparkles-canvas"></canvas>
+  <div class="page-title-wrap">
+    <h2 class="page-section-title">🎂 Make a Wish, Moon! 🎂</h2>
+    <p class="page-section-sub">Close your eyes and blow out the candles...</p>
+  </div>
+
+  <div class="cake-scene" id="cake-scene">
+    <!-- 3D Cake built with CSS -->
+    <div class="cake-wrapper" id="cake-wrapper">
+      <!-- Candles -->
+      <div class="candles-row" id="candles-row">
+        <div class="candle"><div class="flame"><div class="flame-inner"></div></div></div>
+        <div class="candle"><div class="flame"><div class="flame-inner"></div></div></div>
+        <div class="candle"><div class="flame"><div class="flame-inner"></div></div></div>
+        <div class="candle"><div class="flame"><div class="flame-inner"></div></div></div>
+        <div class="candle"><div class="flame"><div class="flame-inner"></div></div></div>
+      </div>
+
+      <!-- Cake Layers -->
+      <div class="cake-layer layer-top">
+        <div class="cake-layer-side layer-top-side"></div>
+        <div class="cake-frosting top-frosting"></div>
+        <div class="cake-decoration">🌸🌹🌸</div>
+      </div>
+      <div class="cake-layer layer-mid">
+        <div class="cake-layer-side layer-mid-side"></div>
+        <div class="cake-frosting mid-frosting"></div>
+        <div class="cake-decoration">💫⭐💫</div>
+      </div>
+      <div class="cake-layer layer-bot">
+        <div class="cake-layer-side layer-bot-side"></div>
+        <div class="cake-frosting bot-frosting"></div>
+        <div class="cake-decoration">🍓🍒🍓</div>
+      </div>
+      <div class="cake-plate"></div>
+    </div>
+  </div>
+
+  <!-- Music Player -->
+  <div class="music-player glass-card" id="music-player">
+    <div class="music-icon">🎵</div>
+    <div class="music-info">
+      <span class="music-title">Happy Birthday Song</span>
+      <div class="music-wave">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="music-controls">
+      <button id="btn-play" onclick="toggleMusic()" class="music-btn" title="Play/Pause">▶</button>
+      <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.7" oninput="setVolume(this.value)" class="volume-slider" title="Volume" />
+      <span class="volume-icon">🔊</span>
+    </div>
+  </div>
+
+  <audio id="birthday-audio" loop>
+    <source src="C:\Users\ACER\OneDrive\Desktop\NIMESH\nimesh.mpeg" type="audio/mpeg" />
+  </audio>
+
+  <button class="btn-primary big-btn" onclick="goToCakeCutting()">Cut The Cake 🎂</button>
+</section>
+
+<!-- ===================== PAGE 5: CAKE CUTTING ===================== -->
+<section id="page-cutting" class="page">
+  <canvas id="cutting-canvas"></canvas>
+  <div class="cutting-scene" id="cutting-scene">
+    <div class="cake-cut-wrapper" id="cake-cut-wrapper">
+      <!-- Left half -->
+      <div class="cake-half left-half" id="left-half">
+        <div class="cake-cut-inner"></div>
+        <div class="cut-inside"></div>
+      </div>
+      <!-- Right half -->
+      <div class="cake-half right-half" id="right-half">
+        <div class="cake-cut-inner"></div>
+        <div class="cut-inside"></div>
+      </div>
+      <!-- Knife -->
+      <div class="knife" id="knife">🔪</div>
+    </div>
+
+    <div class="cutting-message" id="cutting-message" style="opacity:0;">
+      <h1 class="birthday-glow-text">Happy Birthday</h1>
+      <h2 class="moon-text">MOON ❤️</h2>
+      <div class="balloons-cutting" id="balloons-cutting"></div>
+    </div>
+
+    <button id="btn-cut-cake" class="btn-primary big-btn pulse-btn" onclick="cutTheCake()">
+      Cut The Cake 🎂
+    </button>
+
+    <button id="btn-go-gallery" class="btn-secondary" onclick="goToGallery()" style="display:none; margin-top:20px;">
+      View Memory Gallery 📸
+    </button>
+  </div>
+</section>
+
+<!-- ===================== PAGE 6: MEMORY GALLERY ===================== -->
+<section id="page-gallery" class="page">
+  <canvas id="gallery-canvas"></canvas>
+  <div class="gallery-header">
+    <h2 class="page-section-title">📸 Memory Gallery</h2>
+    <p class="page-section-sub">Beautiful moments, cherished forever 💕</p>
+  </div>
+
+  <div class="gallery-masonry" id="gallery-masonry">
+    <!-- Photo 1 -->
+    <div class="scrapbook-photo" onclick="openLightbox('images/photo1.jpg', 'Stunning in your traditional saree 🌸')">
+      <div class="tape"></div>
+      <div class="photo-inner">
+        <img src="images/photo1.jpg" alt="Memory 1" class="gallery-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'img-placeholder\'>📸<br/>Photo 1<br/><small>Add photo1.jpg</small></div>'" />
+      </div>
+      <div class="photo-caption">Beautiful Saree Look 💕</div>
+    </div>
+
+    <!-- Photo 2 -->
+    <div class="scrapbook-photo tall" onclick="openLightbox('images/photo2.jpg', 'Radiant like the golden sun 💛')">
+      <div class="tape"></div>
+      <div class="photo-inner">
+        <img src="images/photo2.jpg" alt="Memory 2" class="gallery-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'img-placeholder\'>📸<br/>Photo 2<br/><small>Add photo2.jpg</small></div>'" />
+      </div>
+      <div class="photo-caption">Shining Bright ☀️</div>
+    </div>
+
+    <!-- Photo 3 -->
+    <div class="scrapbook-photo" onclick="openLightbox('images/photo3.jpg', 'Captivating eyes, beautiful smile ✨')">
+      <div class="tape"></div>
+      <div class="photo-inner">
+        <img src="images/photo3.jpg" alt="Memory 3" class="gallery-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'img-placeholder\'>📸<br/>Photo 3<br/><small>Add photo3.jpg</small></div>'" />
+      </div>
+      <div class="photo-caption">Sweetest Smile 😊</div>
+    </div>
+
+    <!-- Photo 4 -->
+    <div class="scrapbook-photo wide" onclick="openLightbox('images/photo4.jpg', 'Glow that brightens my day 💖')">
+      <div class="tape"></div>
+      <div class="photo-inner">
+        <img src="images/photo4.jpg" alt="Memory 4" class="gallery-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'img-placeholder\'>📸<br/>Photo 4<br/><small>Add photo4.jpg</small></div>'" />
+      </div>
+      <div class="photo-caption">Pure Elegance ✨</div>
+    </div>
+
+    <!-- Photo 5 -->
+    <div class="scrapbook-photo" onclick="openLightbox('images/photo5.jpg', 'Charming and adorable as always 💕')">
+      <div class="tape"></div>
+      <div class="photo-inner">
+        <img src="images/photo5.jpg" alt="Memory 5" class="gallery-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'img-placeholder\'>📸<br/>Photo 5<br/><small>Add photo5.jpg</small></div>'" />
+      </div>
+      <div class="photo-caption">Charming Vibe 🌸</div>
+    </div>
+
+    <!-- Circular / Rotating Photos Row -->
+    <div class="gallery-item circle-row-wrap">
+      <div class="circle-photos-row">
+        <div class="circle-photo-wrap">
+          <img src="images/photo1.jpg" alt="Circle 1" class="circle-photo" onerror="this.src=''" />
+          <div class="circle-placeholder" id="cp1">📸</div>
+        </div>
+        <div class="circle-photo-wrap">
+          <img src="images/photo2.jpg" alt="Circle 2" class="circle-photo" onerror="this.src=''" />
+          <div class="circle-placeholder" id="cp2">📸</div>
+        </div>
+        <div class="circle-photo-wrap">
+          <img src="images/photo3.jpg" alt="Circle 3" class="circle-photo" onerror="this.src=''" />
+          <div class="circle-placeholder" id="cp3">📸</div>
+        </div>
+        <div class="circle-photo-wrap">
+          <img src="images/photo4.jpg" alt="Circle 4" class="circle-photo" onerror="this.src=''" />
+          <div class="circle-placeholder" id="cp4">📸</div>
+        </div>
+        <div class="circle-photo-wrap">
+          <img src="images/photo5.jpg" alt="Circle 5" class="circle-photo" onerror="this.src=''" />
+          <div class="circle-placeholder" id="cp5">📸</div>
+        </div>
+        <div class="circle-photo-wrap">
+          <img src="C:\Users\ACER\OneDrive\Desktop\NIMESH\images\6.jpeg" alt="Circle 6" class="circle-photo" onerror="this.src=''" />
+          <div class="circle-placeholder" id="cp6">📸</div>
+        </div>
+      </div>
+      <p class="circle-row-label">💕 Our Special Moments 💕</p>
+    </div>
+
+    <!-- Photo 6 -->
+    
+    </div>
+  </div>
+
+  <button class="btn-primary" onclick="goToMessage()" style="margin: 40px auto; display:block; width:fit-content;">
+    Read My Letter 💌
+  </button>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img id="lightbox-img" src="" alt="Memory" />
+      <p id="lightbox-caption"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 7: FINAL LOVE MESSAGE ===================== -->
+<section id="page-message" class="page">
+  <canvas id="message-canvas"></canvas>
+  <div class="falling-flowers" id="falling-flowers"></div>
+  <div class="floating-hearts-msg" id="floating-hearts-msg"></div>
+
+  <div class="message-container glass-card">
+    <div class="message-envelope">💌</div>
+    <div class="message-text" id="message-text"></div>
+    <div class="message-signature" id="message-signature" style="opacity:0;">
+      <div class="sig-heart">❤️</div>
+      <div>With Love,</div>
+      <div class="sig-name">Your Special Person</div>
+    </div>
+    <button id="btn-restart" class="btn-primary" onclick="restartExperience()" style="display:none; margin-top:30px;">
+      🔁 Relive the Magic
+    </button>
+  </div>
+</section>
+
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<!-- Canvas Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<!-- Main JS -->
+<script src="js/script.js"></script>
+</body>
+</html>
